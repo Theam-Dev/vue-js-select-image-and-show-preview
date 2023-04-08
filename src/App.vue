@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <input type="file" @change="onFileChange" />
+  <div id="preview">
+    <img v-if="url" :src="url" width="80"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      url: null,
+    }
+  },
+  methods: {
+    onFileChange (e) {
+      const file = e.target.files [0];
+      this.url = URL.createObjectURL (file);
+    }
   }
 }
 </script>
