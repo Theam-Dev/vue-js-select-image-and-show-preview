@@ -18,7 +18,11 @@ export default {
   methods: {
     onFileChange(e) {
       const file = e.target.files[0];
-      this.url = URL.createObjectURL(file);
+      if(file == null){
+        this.url ='http://placehold.it/150x150'
+      }else{
+        this.url = URL.createObjectURL(file);
+      }
     }
   }
 }
